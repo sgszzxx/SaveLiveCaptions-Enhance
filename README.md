@@ -1,57 +1,52 @@
-# Save Live Captions
+# SaveLiveCaptions Enhanced
 
-**Tired of losing live captions on Windows?**  This is a simple tool to save the content of live captions! The saved text document is like following:
-><img width="1187" height="477" alt="image" src="https://github.com/user-attachments/assets/78f3a0df-80f3-4e40-bc0e-9137910352c6" />
+An enhanced Windows tool for saving Windows Live Captions text.
 
-###  Features
+This project is based on [LiveCaptionsHelper/SaveLiveCaptions](https://github.com/LiveCaptionsHelper/SaveLiveCaptions) and follows the original MIT License.
 
----
-- ✨Save live captions to a text file.
-- 😃Minimalist floating dashboard.
-- **😎Customizable save options. (save location and quality option in `config.py`)**
+## Features
 
-###  Installation
-### Option 1: Quick Start (Executable)
-You can download the latest version from the [Releases](../../releases) page.
+* Cleaner and more modern UI
+* Light and dark theme support
+* Minimize to system tray
+* Normal exit button
+* Window position memory
+* Auto-start save flow
+* Custom application icon
+* Single-file Windows executable build
 
-> [!IMPORTANT]
-> **Note on Antivirus Alerts:** If you encounter a malware warning for the `.exe` file, it is likely a **false positive** due to the lack of a digital signature. If you worry about this, try option 2 as follows. 
+## Download
 
-### Option 2: Run from Source (Recommended for Security)
-If you prefer to run the code directly, follow these steps in your bash/PowerShell/cmd:
+Go to the **Releases** page and download:
 
-1. **Clone this repo**:
-   ```bash
-   git clone https://github.com/LiveCaptionsHelper/SaveLiveCaptions.git
-   ```
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. **Run the tool**:
-   ```bash
-   python src/main.py
-   ```
-   > **Good News, You can now edit the `src/function/config.py` to modify the quality of saving on your own.**
+```text
+SaveLiveCaptions-v1.0.0-windows.exe
+```
 
-### Guidelines
+## How to use
 
----
+1. Open Windows Live Captions first.
+2. Run `SaveLiveCaptions-v1.0.0-windows.exe`.
+3. Choose a save location.
+4. The app will start saving captions automatically.
+5. Use the tray icon to restore or exit the app.
 
-1. Before you open this application, make sure you already **open the live captions on Windows** (or it will exit automatically). Then double click the `SaveLiveCaptions.exe`. A small dashboard will appear in the top-left corner of your screen. You can drag the background to move this window.
+## Build from source
 
-![Dashboard Preview](./assets/dashboard.png)  
+Install dependencies:
 
-2. The **● (Circle)**  button is "start to save captions" and the **■ (Square)** button is "stop and exit the application". 
+```powershell
+python -m pip install -r requirements.txt
+```
 
-3. **Start saving:** When you click the circle button, a file dialog will open to choose a save location. If you don't choose the direction, the default location is `~/Documents/captions`. 
+Run from source:
 
-4. **Stop and exit:** When you click the square button, it stops and exit the application. You can find your captions file `YYYY-MM-DD_HH-MM-SS_captions.txt` in the chosen location like following.
+```powershell
+python src\main.py
+```
 
-![Captions File Example](./assets/captionsFile.png)
+Build single-file Windows executable:
 
-## License
-
-This project is licensed under the MIT License.
-
-
+```powershell
+pyinstaller --noconfirm --clean --windowed --onefile --name SaveLiveCaptions --icon ass
+```
