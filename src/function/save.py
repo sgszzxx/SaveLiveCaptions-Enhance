@@ -33,24 +33,26 @@ def similarity_ratio(s1: str, s2: str) -> float:
 
 def choose_save_dir():
     global save_dir
-    
-    timestamp = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime())  
 
-    if not save_dir:
-        root = tk.Tk()
-        root.withdraw()  
-        save_dir = filedialog.askdirectory(
-            title="choose direction",
-            initialdir=os.path.expanduser("~")  
-        )
-        root.destroy()  
+    timestamp = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
 
-        if not save_dir:
-            save_dir = os.path.expanduser("~/Documents/captions")
-            os.makedirs(save_dir, exist_ok=True)
-    
+    root = tk.Tk()
+    root.withdraw()
+
+    selected_dir = filedialog.askdirectory(
+        title="选择字幕保存位置",
+        initialdir=save_dir if save_dir else os.path.expanduser("~")
+    )
+
+    root.destroy()
+
+    if not selected_dir:
+        return None
+
+    save_dir = selected_dir
+    os.makedirs(save_dir, exist_ok=True)
+
     filename = os.path.join(save_dir, f"{timestamp}_captions.txt")
-    
     return filename
 
 async def save_replace_txt(filename,old_caption: tuple[float, str], new_caption: tuple[float, str]):
